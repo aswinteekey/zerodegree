@@ -21,18 +21,65 @@ body{
 .logo{
     font-size: 45px;
     font-weight: 400;
-    color: rgb(65, 64, 64);
+    color: rgb(83, 99, 241);
 }
 .center{
     width: 60%;
     height: 50%;
-    background-color: #e4e4e4;
+    display: flex;
+    flex-direction: row;
 }
 .loginimage{
-    
+height: 100%;
+width: 50%;
 }
-
-
+.loginimage > img {
+  width: 100%;
+}
+.loginsqure{
+  height: 100%;
+  width: 50%;
+  background-color: #dad0d067;
+  border-radius: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.signtext{
+  width: 80%;
+  margin: 0;
+  padding: 0;
+}
+.loginform{
+  width: 80%;
+  margin: 0;
+  padding: 0;
+}
+.loginform > input[type=text],input[type=password]
+{
+  width: 100%;
+  height: 40px;
+  border-radius: 4px;
+  border: 0.5px rgb(100, 98, 98) solid;
+  margin-top: 12px;
+}
+.loginform input[type=submit]
+{
+  width: 100%;
+  height: 40px;
+  border-radius: 4px;
+  margin-top: 12px;
+  border: 0px;
+  background-color: rgb(83, 99, 241);
+}
+.signtext > h2,
+.signtext > h4{
+  margin-top: 1px;
+  margin-bottom: 0;
+  font-weight: 400;
+  margin-left: 0;
+}
 
 
 
