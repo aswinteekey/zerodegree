@@ -12,26 +12,18 @@
                 <p class="logo"><b>Zero</b>Degree</p>
             </div>
             <div class="center">
-                <div class="loginimage">
-                    <img src="images/login.png">
-                </div>
                 <div class="loginsqure">
                     <div class="signtext">
-                        <h2>Sign In</h2>
-                        <h4>to access Account</h4>
+                        <h2>Add New</h2>
+                        <h4>Items</h4>
                     </div>
-                    <div class="loginform">
-                        <input type="text" id="loginid"><br>
-                        <input type="text" id="loginpw"><br>
-                        <input type="submit" value="Start" id="goBtn">
-                    </div>
-                    <div class="ownerfirst1">
-                    <a href="addemployee.html">Sign in as Owner &#129130;</a>
+                    <div action="/action_page.php" class="loginform">
+                        <input type="text" id="catbox" placeholder="Category"><br>
+                        <input type="text" id="itembox" placeholder="Item"><br>
+                        <input type="text" id="pricebox" placeholder="Price"><br>
+                        <input type="submit" value="Done" id="insBtn">
                     </div>
                 </div>
-            </div>
-            <div class="ownerfirst2">
-            <a href="">Create an Owner Account</a>
             </div>
         </div>
 
@@ -60,46 +52,35 @@
 
     const db = getDatabase();
 //-------------references---------------------------
-    var loginid = document.getElementById("loginid");
-    var loginpw = document.getElementById("loginpw");
+    var catbox = document.getElementById("catbox");
+    var itembox = document.getElementById("itembox");
+    var pricebox = document.getElementById("pricebox");
 
-    var goBtn = document.getElementById("goBtn")
+    var insBtn = document.getElementById("insBtn")
 
 //-------------Functions---------------------------
-    function selectData(){
-        const dbref = ref(db);
-
-        get(child(dbref,"TheStudents/"+ loginid.value)).then((snapshot)=>{
-            if(snapshot.exists()){
-                if(snapshot.val().PassOfStd==loginpw.value){
-                    window.location.href = "emphome.html";
-                    alert("Login Done");
-                }
-                else{
-                    alert("Wrong Username Or Password !");
-                }
-            }
-            else{
-                alert("no dat found !");
-            }
+    function insertData(){
+        set(ref(db, "AvailableItems/"+ itembox.value),{
+            Catagoryofproduct: catbox.value,
+            ItemName: itembox.value,
+            Price : pricebox
+        })
+        .then(()=>{
+            alert("data stored successfully");
         })
         .catch((error)=>{
             alert("unsuccessfull, error "+error);
         });
-
     }
 
 //-------------Button events---------------------------
 
-    goBtn.addEventListener('click',selectData);
+    insBtn.addEventListener('click',insertData);
 
 
 
   </script>
 
 <!--------------------------------firebase----------------------------------------------->
-
-
-
     </body>
 </html>

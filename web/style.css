@@ -103,6 +103,26 @@ width: 50%;
   font-size: small;
 }
 
+/*----------for mobile---------------*/
+@media only screen and (max-width: 600px) {
+  .center {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+  }
+  .loginsqure{
+    width: 90%;
+    height: auto;
+  }
+  .loginimage{
+    
+    height: auto
+    
+    }
+}
+/*----------for mobile---------------*/
 
 
 
