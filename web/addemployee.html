@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <title>zerodegree</title>
+        <link rel="stylesheet" href=style.css>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <div class="logopostion">
+                <p class="logo"><b>Zero</b>Degree</p>
+            </div>
+            <div class="center">
+                <div class="loginsqure">
+                    <div class="signtext">
+                        <h2>Add New</h2>
+                        <h4>Employee</h4>
+                    </div>
+                    <div action="/action_page.php" class="loginform">
+                        <input type="text" id="namebox" placeholder="Username"><br>
+                        <input type="text" id="passbox" placeholder="Password"><br>
+                        <input type="submit" value="Done" id="insBtn">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!--------------------------------firebase----------------------------------------------->
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyA8ScYxOX1yIH9skdlwcK-e7nHdQ-s4ax8",
+      authDomain: "zero22degree.firebaseapp.com",
+      projectId: "zero22degree",
+      storageBucket: "zero22degree.appspot.com",
+      messagingSenderId: "414761499500",
+      appId: "1:414761499500:web:afb60623e5e74569ef1149"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+
+    import {getDatabase, ref , set, child, update, remove}
+    from "https://www.gstatic.com/firebasejs/10.13.2/firebase-database.js";
+
+    const db = getDatabase();
+//-------------references---------------------------
+    var namebox = document.getElementById("namebox");
+    var passbox = document.getElementById("passbox");
+
+    var insBtn = document.getElementById("insBtn")
+
+//-------------Functions---------------------------
+    function insertData(){
+        set(ref(db, "TheStudents/"+ namebox.value),{
+            NameOfStd: namebox.value,
+            PassOfStd: passbox.value
+        })
+        .then(()=>{
+            alert("data stored successfully");
+        })
+        .catch((error)=>{
+            alert("unsuccessfull, error "+error);
+        });
+    }
+
+//-------------Button events---------------------------
+
+    insBtn.addEventListener('click',insertData);
+
+
+
+  </script>
+
+<!--------------------------------firebase----------------------------------------------->
+    </body>
+</html>
